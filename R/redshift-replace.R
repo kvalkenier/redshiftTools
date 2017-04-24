@@ -63,7 +63,7 @@ rs_replace_table = function(
       print("Copying data from S3 into Redshift")
       copyStr = "copy %s from 's3://%s/%s.' region '%s' csv gzip ignoreheader 1 emptyasnull COMPUPDATE FALSE"
       if (iam_role_arn) {
-        copyStr = paste(copyStr, sprintf("iam_role '%s'", iam_role_arn) sep=" "))
+        copyStr = paste(copyStr, sprintf("iam_role '%s'", iam_role_arn), sep=" ")
       } else {
         copyStr = paste(copyStr, sprintf("credentials 'aws_access_key_id=%s;aws_secret_access_key=%s'", access_key, secret_key) sep=" "))
       }
